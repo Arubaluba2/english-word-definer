@@ -1,7 +1,9 @@
 #The war is everlasting. 
 #This is the phrase which is written in the text file at the moment.
 import string
-def wordDefiner():
+import requests
+
+def wordSaverFromFileToDict():
     infile = open("wordsToDefine.txt", "r")
     outfile = open("wordsAndTheirDefinitions", "w")
     wordsAndTheirDefinitions = dict()
@@ -13,9 +15,9 @@ def wordDefiner():
         sectionsInLine = line.split(" ")
         for element in sectionsInLine:
             wordsAndTheirDefinitions[element] = ""
-        print(wordsAndTheirDefinitions)
+        return wordsAndTheirDefinitions
+
+def wordDefiner(dictionnary):
     for key in wordsAndTheirDefinitions:
         url = f"https://api.dictionaryapi.dev/api/v2/entries/en/{key}"
         print(f"{url}")
-
-wordDefiner()
